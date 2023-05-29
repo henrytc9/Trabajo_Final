@@ -1,0 +1,19 @@
+@startuml pdf
+
+actor Cliente
+
+participant ExploradorArchivos
+participant IteradorPDF
+participant ColeccionArchivos
+
+Cliente -> ExploradorArchivos: seleccionarDirectorio()
+ExploradorArchivos -> ColeccionArchivos: crearColeccion(directorio)
+ExploradorArchivos -> IteradorPDF: crearIterador(coleccionArchivos)
+Cliente -> ExploradorArchivos: obtenerListaArchivosPDF(iteradorPDF)
+ExploradorArchivos -> IteradorPDF: obtenerSiguienteArchivo()
+IteradorPDF -> ColeccionArchivos: obtenerArchivo(indice)
+ColeccionArchivos --> IteradorPDF: retornarArchivo(archivo)
+IteradorPDF --> ExploradorArchivos: retornarArchivo(archivo)
+ExploradorArchivos --> Cliente: mostrarArchivoPDF(archivo)
+
+@enduml

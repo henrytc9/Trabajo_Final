@@ -1,0 +1,25 @@
+@startuml diagrama
+class Cliente {
+    + __init__()
+    + next_image() : void
+    + previous_image() : void
+}
+
+class ImageGallery {
+    - image_iterator: ImageIterator
+    + __init__(images: List[str])
+    + next_image() : void
+    + previous_image() : void
+}
+
+class ImageIterator {
+    - images: List[str]
+    - current_index: int
+    + __init__(images: List[str])
+    + has_next() : bool
+    + next() : str
+    + previous() : str
+}
+ImageGallery --> ImageIterator
+Cliente --> ImageGallery
+@enduml
